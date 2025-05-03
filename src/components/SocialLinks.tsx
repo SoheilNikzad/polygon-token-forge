@@ -6,10 +6,11 @@ import { Linkedin, Github, MessageCircle, Instagram, Facebook, Link } from "luci
 interface SocialLinkProps {
   icon: React.ReactNode;
   label: string;
+  persianLabel: string;
   href: string;
 }
 
-const SocialLink: React.FC<SocialLinkProps> = ({ icon, label, href }) => {
+const SocialLink: React.FC<SocialLinkProps> = ({ icon, label, persianLabel, href }) => {
   return (
     <Button 
       variant="outline" 
@@ -17,7 +18,10 @@ const SocialLink: React.FC<SocialLinkProps> = ({ icon, label, href }) => {
       onClick={() => window.open(href, "_blank")}
     >
       {icon}
-      <span>{label}</span>
+      <span className="flex flex-col items-center">
+        <span>{label}</span>
+        <span className="text-xs">{persianLabel}</span>
+      </span>
     </Button>
   );
 };
@@ -27,40 +31,48 @@ const SocialLinks: React.FC = () => {
     <div className="grid grid-cols-2 gap-4">
       <SocialLink 
         icon={<Linkedin className="h-5 w-5" />} 
-        label="LinkedIn" 
+        label="LinkedIn"
+        persianLabel="لینکدین" 
         href="https://www.linkedin.com/in/soheilnikzad/" 
       />
       
       <SocialLink 
         icon={<Github className="h-5 w-5" />} 
-        label="GitHub" 
+        label="GitHub"
+        persianLabel="گیت‌هاب" 
         href="https://github.com/SoheilNikzad" 
       />
       
       <SocialLink 
         icon={<MessageCircle className="h-5 w-5" />} 
-        label="Telegram" 
+        label="Telegram"
+        persianLabel="تلگرام" 
         href="https://t.me/SoheilNikzad" 
       />
       
       <SocialLink 
         icon={<Instagram className="h-5 w-5" />} 
-        label="Instagram" 
+        label="Instagram"
+        persianLabel="اینستاگرام" 
         href="https://www.instagram.com/amuzanjirbaaf/" 
       />
       
       <SocialLink 
         icon={<Facebook className="h-5 w-5" />} 
-        label="Facebook" 
+        label="Facebook"
+        persianLabel="فیسبوک" 
         href="https://www.facebook.com/mirsoheilnikzad/" 
       />
       
       <Button 
         className="bg-polygon hover:bg-polygon-dark text-white col-span-2 flex justify-center items-center gap-2" 
-        onClick={() => window.location.href = "/token-creator"}
+        onClick={() => window.location.href = "/tokenfactory"}
       >
         <Link className="h-5 w-5" />
-        <span>Token Factory Lab</span>
+        <span className="flex flex-col items-center">
+          <span>Token Factory Lab</span>
+          <span className="text-xs">کارخانه توکن</span>
+        </span>
       </Button>
     </div>
   );
