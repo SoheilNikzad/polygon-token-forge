@@ -21,25 +21,74 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <div className="min-h-screen flex flex-col">
-          <Navbar />
-          <main className="flex-1">
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/token-creator" element={<TokenCreatorPage />} />
-              <Route path="/launchpad" element={<LaunchpadPage />} />
-              <Route path="/projects" element={<ProjectsPage />} />
-              <Route path="/listing" element={<TokenListingPage />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-          <footer className="bg-muted py-6">
-            <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-              <p>© 2025 PolyLaunch. All rights reserved.</p>
-              <p className="mt-2">
-                Built for the Polygon network. Not affiliated with Polygon Labs.
-              </p>
-            </div>
-          </footer>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/token-creator" element={
+              <>
+                <Navbar />
+                <main className="flex-1">
+                  <TokenCreatorPage />
+                </main>
+                <footer className="bg-muted py-6">
+                  <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
+                    <p>© 2025 PolyLaunch. All rights reserved.</p>
+                    <p className="mt-2">
+                      Built for the Polygon network. Not affiliated with Polygon Labs.
+                    </p>
+                  </div>
+                </footer>
+              </>
+            } />
+            <Route path="/launchpad" element={
+              <>
+                <Navbar />
+                <main className="flex-1">
+                  <LaunchpadPage />
+                </main>
+                <footer className="bg-muted py-6">
+                  <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
+                    <p>© 2025 PolyLaunch. All rights reserved.</p>
+                    <p className="mt-2">
+                      Built for the Polygon network. Not affiliated with Polygon Labs.
+                    </p>
+                  </div>
+                </footer>
+              </>
+            } />
+            <Route path="/projects" element={
+              <>
+                <Navbar />
+                <main className="flex-1">
+                  <ProjectsPage />
+                </main>
+                <footer className="bg-muted py-6">
+                  <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
+                    <p>© 2025 PolyLaunch. All rights reserved.</p>
+                    <p className="mt-2">
+                      Built for the Polygon network. Not affiliated with Polygon Labs.
+                    </p>
+                  </div>
+                </footer>
+              </>
+            } />
+            <Route path="/listing" element={
+              <>
+                <Navbar />
+                <main className="flex-1">
+                  <TokenListingPage />
+                </main>
+                <footer className="bg-muted py-6">
+                  <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
+                    <p>© 2025 PolyLaunch. All rights reserved.</p>
+                    <p className="mt-2">
+                      Built for the Polygon network. Not affiliated with Polygon Labs.
+                    </p>
+                  </div>
+                </footer>
+              </>
+            } />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </div>
       </BrowserRouter>
     </TooltipProvider>
