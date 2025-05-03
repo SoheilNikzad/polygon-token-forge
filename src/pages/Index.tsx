@@ -34,21 +34,23 @@ const Index = () => {
               </p>
               <div className="flex flex-wrap gap-4 pt-2">
                 <Button
-                  as={Link}
-                  to="/token-creator"
                   size="lg"
                   className="bg-polygon hover:bg-polygon-dark text-white font-medium"
+                  asChild
                 >
-                  Create Token <ArrowRight className="ml-2 h-5 w-5" />
+                  <Link to="/token-creator">
+                    Create Token <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
                 </Button>
                 <Button
-                  as={Link}
-                  to="/launchpad"
                   variant="outline"
                   size="lg"
                   className="border-polygon text-polygon hover:bg-polygon/10"
+                  asChild
                 >
-                  Explore Projects
+                  <Link to="/launchpad">
+                    Explore Projects
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -176,13 +178,10 @@ const Index = () => {
               <p className="text-white/90 mb-4">
                 Get started with creating your own token on Polygon in minutes.
               </p>
-              <Button
-                as={Link}
-                to="/token-creator"
-                variant="secondary"
-                className="w-full"
-              >
-                Create Token
+              <Button variant="secondary" className="w-full" asChild>
+                <Link to="/token-creator">
+                  Create Token
+                </Link>
               </Button>
             </div>
           </div>
@@ -198,23 +197,15 @@ const Index = () => {
             Create your token, run a presale, and list on DEX - all in one place.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button
-              as={Link}
-              to="/token-creator"
-              variant="secondary"
-              size="lg"
-              className="font-medium"
-            >
-              Launch Your Token
+            <Button variant="secondary" size="lg" className="font-medium" asChild>
+              <Link to="/token-creator">
+                Launch Your Token
+              </Link>
             </Button>
-            <Button
-              as={Link}
-              to="/projects"
-              variant="outline"
-              size="lg"
-              className="border-white text-white hover:bg-white/10 font-medium"
-            >
-              Explore Projects
+            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10 font-medium" asChild>
+              <Link to="/projects">
+                Explore Projects
+              </Link>
             </Button>
           </div>
         </div>
@@ -224,3 +215,4 @@ const Index = () => {
 };
 
 export default Index;
+
