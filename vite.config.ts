@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/tokenfactory/",  // Set base URL for subdirectory deployment
+  base: "/",  // Changed from "/tokenfactory/" to "/" for proper root access
   server: {
     host: "::",
     port: 8080,

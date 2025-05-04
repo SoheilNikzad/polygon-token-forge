@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import TokenCreatorPage from "./pages/TokenCreatorPage";
@@ -11,6 +11,7 @@ import LaunchpadPage from "./pages/LaunchpadPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import TokenListingPage from "./pages/TokenListingPage";
 import Navbar from "./components/Navbar";
+import TokenFactoryLayout from "./layouts/TokenFactoryLayout";
 
 const queryClient = new QueryClient();
 
@@ -22,71 +23,25 @@ const App = () => (
       <BrowserRouter>
         <div className="min-h-screen flex flex-col">
           <Routes>
+            {/* Root landing page */}
             <Route path="/" element={<Index />} />
-            <Route path="/token-creator" element={
-              <>
-                <Navbar />
-                <main className="flex-1">
-                  <TokenCreatorPage />
-                </main>
-                <footer className="bg-muted py-6">
-                  <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-                    <p>© 2025 PolyLaunch. All rights reserved.</p>
-                    <p className="mt-2">
-                      Built for the Polygon network. Not affiliated with Polygon Labs.
-                    </p>
-                  </div>
-                </footer>
-              </>
-            } />
-            <Route path="/launchpad" element={
-              <>
-                <Navbar />
-                <main className="flex-1">
-                  <LaunchpadPage />
-                </main>
-                <footer className="bg-muted py-6">
-                  <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-                    <p>© 2025 PolyLaunch. All rights reserved.</p>
-                    <p className="mt-2">
-                      Built for the Polygon network. Not affiliated with Polygon Labs.
-                    </p>
-                  </div>
-                </footer>
-              </>
-            } />
-            <Route path="/projects" element={
-              <>
-                <Navbar />
-                <main className="flex-1">
-                  <ProjectsPage />
-                </main>
-                <footer className="bg-muted py-6">
-                  <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-                    <p>© 2025 PolyLaunch. All rights reserved.</p>
-                    <p className="mt-2">
-                      Built for the Polygon network. Not affiliated with Polygon Labs.
-                    </p>
-                  </div>
-                </footer>
-              </>
-            } />
-            <Route path="/listing" element={
-              <>
-                <Navbar />
-                <main className="flex-1">
-                  <TokenListingPage />
-                </main>
-                <footer className="bg-muted py-6">
-                  <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-                    <p>© 2025 PolyLaunch. All rights reserved.</p>
-                    <p className="mt-2">
-                      Built for the Polygon network. Not affiliated with Polygon Labs.
-                    </p>
-                  </div>
-                </footer>
-              </>
-            } />
+            
+            {/* Token Factory routes with shared layout */}
+            <Route path="/tokenfactory" element={<TokenFactoryLayout />}>
+              <Route index element={<Navigate to="/tokenfactory/create" replace />} />
+              <Route path="create" element={<TokenCreatorPage />} />
+              <Route path="launchpad" element={<LaunchpadPage />} />
+              <Route path="projects" element={<ProjectsPage />} />
+              <Route path="listing" element={<TokenListingPage />} />
+            </Route>
+            
+            {/* Legacy routes - redirect to new structure */}
+            <Route path="/token-creator" element={<Navigate to="/tokenfactory/create" replace />} />
+            <Route path="/launchpad" element={<Navigate to="/tokenfactory/launchpad" replace />} />
+            <Route path="/projects" element={<Navigate to="/tokenfactory/projects" replace />} />
+            <Route path="/listing" element={<Navigate to="/tokenfactory/listing" replace />} />
+            
+            {/* 404 route */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
